@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="IngredientTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2016-05-11T20:57:43" hostname="epicodus-93.local" time="0.041">
+  <properties/>
+  <testcase name="Ingredient_InstanceOfIngredient" classname="IngredientTest" time="0.006"/>
+  <testcase name="Ingredient_SaveIngredient" classname="IngredientTest" time="0.014"/>
+  <testcase name="Ingredient_FindIngredient" classname="IngredientTest" time="0.014"/>
+  <testcase name="Ingredient_GetIngredientName" classname="IngredientTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

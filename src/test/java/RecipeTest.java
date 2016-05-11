@@ -1,4 +1,3 @@
-
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -78,6 +77,16 @@ public class RecipeTest {
     testRecipe.save();
     testRecipe.tagRecipe(testCategory);
     assertEquals(1, testRecipe.getCategories().size());
+  }
+
+  @Test
+  public void Recipe_ingredientGetAssignedCOrrectly(){
+    Recipe testRecipe = new Recipe("Pizza", "Make the Pizza");
+    Ingredient testIngredient = new Ingredient("Flour");
+    testRecipe.save();
+    testIngredient.save();
+    testRecipe.addIngredient(testIngredient);
+    assertEquals("Flour", testRecipe.getIngredients().get(0).getIngredientName());
   }
 
 }

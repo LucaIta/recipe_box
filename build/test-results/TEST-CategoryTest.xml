@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CategoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-11T18:40:17" hostname="epicodus-93.local" time="0.293">
+<testsuite name="CategoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-11T20:57:43" hostname="epicodus-93.local" time="0.234">
   <properties/>
-  <testcase name="Category_SaveCategoryToDatabase" classname="CategoryTest" time="0.107"/>
-  <testcase name="Category_UpdateCategoryInDatabase" classname="CategoryTest" time="0.026"/>
-  <testcase name="Category_retrieveRecipesFromCategory" classname="CategoryTest" time="0.098"/>
-  <testcase name="Category_InstanceofCategory" classname="CategoryTest" time="0.006"/>
-  <testcase name="Category_getCategoryName" classname="CategoryTest" time="0.005"/>
+  <testcase name="Category_SaveCategoryToDatabase" classname="CategoryTest" time="0.113"/>
+  <testcase name="Category_UpdateCategoryInDatabase" classname="CategoryTest" time="0.027"/>
+  <testcase name="Category_retrieveRecipesFromCategory" classname="CategoryTest" time="0.033"/>
+  <testcase name="Category_InstanceofCategory" classname="CategoryTest" time="0.005"/>
+  <testcase name="Category_getCategoryName" classname="CategoryTest" time="0.006"/>
   <testcase name="Category_FindCategoryInDatabase" classname="CategoryTest" time="0.014"/>
   <testcase name="Category_deletesCategoryCorrectly" classname="CategoryTest" time="0.033"/>
   <system-out><![CDATA[]]></system-out>
