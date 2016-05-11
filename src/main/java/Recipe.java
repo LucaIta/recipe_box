@@ -1,5 +1,6 @@
 import org.sql2o.*;
 import java.util.List;
+import java.util.ArrayList;
 
 
 public class Recipe {
@@ -67,9 +68,47 @@ public class Recipe {
       String sql = "UPDATE recipes SET " + column_name + " = :column_value WHERE id = :recipe_id";
       con.createQuery(sql).addParameter("column_value", column_value).addParameter("recipe_id", this.getRecipeId()).executeUpdate();
     }
-
   }
 
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM recipes WHERE id = :recipe_id";
+      String sql2 = "DELETE FROM recipes_categories WHERE recipe_id = :recipe_id";
+      con.createQuery(sql).addParameter("recipe_id", this.getRecipeId()).executeUpdate();
+      con.createQuery(sql2).addParameter("recipe_id", this.getRecipeId()).executeUpdate();
+    }
+  }
+
+  public void rate(int rating) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE recipes SET rating = :rating WHERE id = :id";
+      con.createQuery(sql).addParameter("rating", rating).addParameter("id", this.getRecipeId()).executeUpdate();
+    }
+  }
+
+  public void tagRecipe(Category category) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO recipes_categories (recipe_id, category_id) VALUES (:recipe_id, :category_id)";
+      con.createQuery(sql).addParameter("recipe_id", this.getRecipeId()).addParameter("category_id", category.getCategoryId()).executeUpdate();
+    }
+  }
+
+  public List<Category> getCategories() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT category_id FROM recipes_categories WHERE recipe_id = :recipe_id";
+      List<Integer> category_ids = con.createQuery(sql).addParameter("recipe_id", this.getRecipeId()).executeAndFetch(Integer.class);
+
+      List<Category> categories = new ArrayList<Category>();
+
+      for(Integer category_id : category_ids) {
+        String joinQuery = "SELECT * FROM categories WHERE id=:category_id";
+        Category category = con.createQuery(joinQuery).addParameter("category_id", category_id).executeAndFetchFirst(Category.class);
+        categories.add(category);
+      }
+
+      return categories;
+    }
+  }
 
 
 }
