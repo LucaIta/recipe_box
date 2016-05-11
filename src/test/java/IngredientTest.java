@@ -36,4 +36,16 @@ public class IngredientTest {
     assertTrue(testIngredient.equals(foundIngredient));
   }
 
+  @Test
+  public void Ingredient_DeleteIngredient() {
+    Ingredient testIngredient = new Ingredient("Flour");
+    Recipe testRecipe = new Recipe("Pizza", "Make the pizza");
+    testRecipe.save();
+    testIngredient.save();
+    testRecipe.addIngredient(testIngredient);
+    testIngredient.delete();
+    assertEquals(0, Ingredient.all().size());
+    assertEquals(0, testRecipe.getIngredients().size());
+  }
+
 }

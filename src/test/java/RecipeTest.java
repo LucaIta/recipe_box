@@ -89,4 +89,16 @@ public class RecipeTest {
     assertEquals("Flour", testRecipe.getIngredients().get(0).getIngredientName());
   }
 
+  @Test
+  public void Recipe_returnRecipesSortedByRating(){
+    Recipe testRecipe = new Recipe("Pizza", "Make the Pizza");
+    Recipe testRecipe2 = new Recipe("Pasta", "Make the pasta");
+    testRecipe.save();
+    testRecipe2.save();
+    testRecipe.rate(1);
+    testRecipe2.rate(2);
+    assertEquals(testRecipe.getRecipeName(), Recipe.getRecipesSorted().get(0).getRecipeName());
+    assertTrue(testRecipe.equals(Recipe.getRecipesSorted().get(0)));
+  }
+
 }

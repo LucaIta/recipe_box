@@ -80,6 +80,7 @@ public class Recipe {
   }
 
   public void rate(int rating) {
+    this.rating = rating;
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE recipes SET rating = :rating WHERE id = :id";
       con.createQuery(sql).addParameter("rating", rating).addParameter("id", this.getRecipeId()).executeUpdate();
@@ -129,6 +130,14 @@ public class Recipe {
         ingredients.add(ingredient);
       }
       return ingredients;
+    }
+  }
+
+  public static List<Recipe> getRecipesSorted(){
+    try(Connection con = DB.sql2o.open()){
+      String sql = "SELECT * FROM recipes ORDER BY rating";
+      List<Recipe> recipes = con.createQuery(sql).executeAndFetch(Recipe.class);
+      return recipes;
     }
   }
 
