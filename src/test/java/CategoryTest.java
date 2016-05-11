@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 
 public class CategoryTest {
+  
   @Rule
   public DatabaseRule database = new DatabaseRule();
 

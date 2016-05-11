@@ -48,4 +48,14 @@ public class IngredientTest {
     assertEquals(0, testRecipe.getIngredients().size());
   }
 
+  @Test
+  public void Ingredient_retrieveRecipesFromIngredient(){
+    Recipe testRecipe = new Recipe("Pizza", "Make the Pizza");
+    Ingredient testIngredient = new Ingredient("Flour");
+    testRecipe.save();
+    testIngredient.save();
+    testRecipe.addIngredient(testIngredient);
+    assertEquals("Pizza", testIngredient.getRecipes().get(0).getRecipeName());
+  }
+
 }

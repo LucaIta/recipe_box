@@ -58,4 +58,20 @@ public class Ingredient {
     }
   }
 
+  public List<Recipe> getRecipes() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT recipe_id FROM recipes_ingredients WHERE ingredient_id=:ingredient_id";
+      List<Integer> recipe_ids = con.createQuery(sql).addParameter("ingredient_id", this.getId()).executeAndFetch(Integer.class);
+
+      List<Recipe> recipes =  new ArrayList<Recipe>();
+
+      for(Integer recipe_id : recipe_ids) {
+        String joinQuery = "SELECT * FROM recipes WHERE id = :recipe_id";
+        Recipe recipe = con.createQuery(joinQuery).addParameter("recipe_id", recipe_id).executeAndFetchFirst(Recipe.class);
+        recipes.add(recipe);
+      }
+      return recipes;
+    }
+  }
+
 }

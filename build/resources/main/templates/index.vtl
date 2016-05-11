@@ -1,0 +1,18 @@
+<h1>Recipe Box</h1>
+<div class="row">
+  <div class="col-xs-6">
+    <h4>Categories</h4>
+    #foreach($category in $categories)
+      <li><a href="/category/$category.getCategoryId()">$category.getCategoryName()</a></li>
+    #end
+  </div>
+  <div class="col-xs-6">
+    <h4>Recipes</h4>
+    #foreach($recipe in $recipes)
+      <li><a href="/recipe/$recipe.getRecipeId()">$recipe.getRecipeName()</a></li>
+    #end
+  </div>
+
+</div>
+
+<a href="/recipe/new"><p>Add a new recipe</p></a>
