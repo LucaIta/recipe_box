@@ -189,6 +189,18 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Italian");
   }
 
+  @Test
+  public void individualCateogriesPageListsOutAssociatedRecipes() {
+    Category category = new Category("Mexican");
+    Recipe recipe = new Recipe("Tacos", "Make them");
+    category.save();
+    recipe.save();
+    recipe.tagRecipe(category);
+    String url = String.format("http://localhost:4567/category/%d", category.getCategoryId());
+    goTo(url);
+    assertThat(pageSource()).contains("Tacos");
+  }
+
 
 
 }

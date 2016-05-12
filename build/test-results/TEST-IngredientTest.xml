@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IngredientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-12T20:19:22" hostname="epicodus-93.local" time="0.13">
+<testsuite name="IngredientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-12T20:33:43" hostname="epicodus-93.local" time="0.126">
   <properties/>
-  <testcase name="Ingredient_InstanceOfIngredient" classname="IngredientTest" time="0.006"/>
-  <testcase name="Ingredient_retrieveRecipesFromIngredient" classname="IngredientTest" time="0.032"/>
-  <testcase name="Ingredient_SaveIngredient" classname="IngredientTest" time="0.016"/>
-  <testcase name="Ingredient_DeleteIngredient" classname="IngredientTest" time="0.033"/>
-  <testcase name="Ingredient_FindIngredient" classname="IngredientTest" time="0.017"/>
-  <testcase name="Ingredient_GetIngredientName" classname="IngredientTest" time="0.005"/>
-  <testcase name="Ingredient_DontSaveIngredientWHenItAlreadyExist" classname="IngredientTest" time="0.021"/>
+  <testcase name="Ingredient_InstanceOfIngredient" classname="IngredientTest" time="0.004"/>
+  <testcase name="Ingredient_retrieveRecipesFromIngredient" classname="IngredientTest" time="0.024"/>
+  <testcase name="Ingredient_SaveIngredient" classname="IngredientTest" time="0.018"/>
+  <testcase name="Ingredient_DeleteIngredient" classname="IngredientTest" time="0.035"/>
+  <testcase name="Ingredient_FindIngredient" classname="IngredientTest" time="0.018"/>
+  <testcase name="Ingredient_GetIngredientName" classname="IngredientTest" time="0.006"/>
+  <testcase name="Ingredient_DontSaveIngredientWHenItAlreadyExist" classname="IngredientTest" time="0.02"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

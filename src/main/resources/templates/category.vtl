@@ -1,0 +1,12 @@
+<h1>$category.getCategoryName()</h1>
+<div class="row">
+  <div class="col-xs-6">
+
+  </div>
+  <div class="col.xs-6">
+    <h3>Recipes</h3>
+    #foreach($recipe in $recipes)
+      <p><a href="/recipe/$recipe.getRecipeId()">$recipe.getRecipeName()</a></p>
+    #end
+  </div>
+</div>
