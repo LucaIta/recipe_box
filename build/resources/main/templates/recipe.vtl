@@ -1,5 +1,12 @@
 <h1>$recipe.getRecipeName()</h1>
 <p>$recipe.getInstructions()</p>
+#if($recipeCategories.size() != 0)
+  <h4>Categories</h4>
+  #foreach($category in $recipeCategories)
+    <li>$category.getCategoryName()</li>
+  #end
+#else
+#end
 
 #if ($recipe.getRating() != 0)
   <p>This recipe rating is $recipe.getRating()</p>
@@ -34,6 +41,20 @@
 
     <button type="submit" id="recipeRating" class="btn btn-success">Rate the recipe</button>
 </form>
+
+<form action="/recipe/$recipe.getRecipeId()/assign" method="post">
+
+    <label for="rating">Select a category</label>
+    <select id='recipeCategory' name='recipeCategory' type='text'>
+      #foreach($category in $categories)
+        <option value="$category.getCategoryId()">$category.getCategoryName()</option>
+      #end
+    </select>
+
+    <button type="submit" id="addCategory" class="btn btn-success">Add recipe to Category</button>
+</form>
+
+
 
 <form action="/recipe/$recipe.getRecipeId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete-recipe">Delete recipe</button>

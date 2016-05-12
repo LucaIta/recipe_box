@@ -97,4 +97,22 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Pizza").contains("This recipe rating is 3");
   }
 
+  @Test
+  public void recipeHasCategory() {
+    Recipe newRecipe = new Recipe("Pizza", "Make the Pizza");
+    newRecipe.save();
+    String url = String.format("http://localhost:4567/recipe/%d", newRecipe.getRecipeId());
+    goTo(url);
+    assertThat(pageSource()).doesNotContain("Categories");
+    Category category = new Category("Italian");
+    category.save();
+    goTo(url);
+    click("option", withText("Italian"));
+    submit("#addCategory");
+    assertThat(pageSource()).contains("Italian");
+  }
+
+
+  // should check that categories are not there before adding them
+
 }

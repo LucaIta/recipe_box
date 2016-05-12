@@ -34,7 +34,8 @@ public class App {
 
       Recipe newRecipe = new Recipe(recipeName, instructions);
       newRecipe.save();
-
+      model.put("recipeCategories", newRecipe.getCategories());
+      model.put("categories", Category.all());
       model.put("template", "templates/recipe.vtl");
       model.put("recipe", newRecipe);
       return new ModelAndView(model, layout);
@@ -44,6 +45,8 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       int recipe_id = Integer.parseInt(request.params("recipe_id"));
       Recipe newRecipe = Recipe.find(recipe_id);
+      model.put("recipeCategories", newRecipe.getCategories());
+      model.put("categories", Category.all());
       model.put("recipe", newRecipe);
       model.put("template", "templates/recipe.vtl");
       return new ModelAndView(model, layout);
@@ -74,5 +77,14 @@ public class App {
       response.redirect(url);
       return null;
     });
+
+    post("/recipe/:recipe_id/assign", (request, response) ->{
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("recipe_id")));
+      Category category = Category.find(Integer.parseInt(request.queryParams("recipeCategory")));
+      recipe.tagRecipe(category);
+      String url = String.format("/recipe/%d", recipe.getRecipeId());
+      response.redirect(url);
+      return null;
+    }); 
   }
 }
