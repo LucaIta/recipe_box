@@ -73,7 +73,28 @@ public class AppTest extends FluentTest {
     click("option", withText("Recipe Name"));
     fill("#newRecipeContent").with("Margherita Pizza");
     submit("#recipeFormButton");
-    assertThat(pageSource()).contains("Margherita Pizza");
+    assertThat(pageSource()).contains("Margherita Pizza").doesNotContain("This recipe rating is");
+  }
+
+  @Test
+  public void recipeIsDeleted(){
+    Recipe newRecipe = new Recipe("Pizza", "Make the Pizza");
+    newRecipe.save();
+    String url = String.format("http://localhost:4567/recipe/%d", newRecipe.getRecipeId());
+    goTo(url);
+    submit(".btn-danger");
+    assertThat(pageSource()).contains("Recipe Box").doesNotContain("Pizza");
+  }
+
+  @Test
+  public void recipeIsRated() {
+    Recipe newRecipe = new Recipe("Pizza", "Make the Pizza");
+    newRecipe.save();
+    String url = String.format("http://localhost:4567/recipe/%d", newRecipe.getRecipeId());
+    goTo(url);
+    click("option", withText("3"));
+    submit("#recipeRating");
+    assertThat(pageSource()).contains("Pizza").contains("This recipe rating is 3");
   }
 
 }

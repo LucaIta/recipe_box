@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RecipeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2016-05-12T15:50:56" hostname="epicodus-93.local" time="0.171">
+<testsuite name="RecipeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2016-05-12T16:28:10" hostname="epicodus-93.local" time="0.244">
   <properties/>
   <testcase name="Recipe_SaveRecipe" classname="RecipeTest" time="0.012"/>
-  <testcase name="Recipe_retrieveRecipeCorrectly" classname="RecipeTest" time="0.013"/>
+  <testcase name="Recipe_retrieveRecipeCorrectly" classname="RecipeTest" time="0.012"/>
   <testcase name="Recipe_tagRecipewithCategory" classname="RecipeTest" time="0.021"/>
   <testcase name="Recipe_updatesTheRecipeNameCorrectly" classname="RecipeTest" time="0.017"/>
-  <testcase name="Recipe_rateRecipeCorrectly" classname="RecipeTest" time="0.017"/>
+  <testcase name="Recipe_rateRecipeCorrectly" classname="RecipeTest" time="0.088"/>
   <testcase name="Recipe_returnRecipesSortedByRating" classname="RecipeTest" time="0.029"/>
-  <testcase name="Recipe_getInstructions" classname="RecipeTest" time="0.004"/>
-  <testcase name="Recipe_InstanceofRecipe" classname="RecipeTest" time="0.005"/>
-  <testcase name="Recipe_getRecipeName" classname="RecipeTest" time="0.004"/>
-  <testcase name="Recipe_DeleteRecipeFromDatabase" classname="RecipeTest" time="0.028"/>
-  <testcase name="Recipe_ingredientGetAssignedCOrrectly" classname="RecipeTest" time="0.021"/>
+  <testcase name="Recipe_getInstructions" classname="RecipeTest" time="0.005"/>
+  <testcase name="Recipe_InstanceofRecipe" classname="RecipeTest" time="0.004"/>
+  <testcase name="Recipe_getRecipeName" classname="RecipeTest" time="0.005"/>
+  <testcase name="Recipe_DeleteRecipeFromDatabase" classname="RecipeTest" time="0.029"/>
+  <testcase name="Recipe_ingredientGetAssignedCOrrectly" classname="RecipeTest" time="0.022"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

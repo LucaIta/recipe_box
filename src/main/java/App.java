@@ -59,5 +59,20 @@ public class App {
       return null;
     });
 
+    post("/recipe/:recipe_id/delete", (request, response) ->  {
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("recipe_id")));
+      recipe.delete();
+      response.redirect("/");
+      return null;
+    });
+
+    post("/recipe/:recipe_id/rate", (request, response) ->  {
+      Recipe newRecipe = Recipe.find(Integer.parseInt(request.params("recipe_id")));
+      int rating = Integer.parseInt(request.queryParams("updateRecipe"));
+      newRecipe.rate(rating);
+      String url = String.format("/recipe/%d", Integer.parseInt(request.params("recipe_id")));
+      response.redirect(url);
+      return null;
+    });
   }
 }

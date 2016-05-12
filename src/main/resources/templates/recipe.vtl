@@ -1,8 +1,16 @@
 <h1>$recipe.getRecipeName()</h1>
 <p>$recipe.getInstructions()</p>
+
+#if ($recipe.getRating() != 0)
+  <p>This recipe rating is $recipe.getRating()</p>
+#else
+#end
+
 <br>
 <br>
 <h3>Edit your recipe</h3>
+
+
 <form action="/recipe/$recipe.getRecipeId()" method="post">
   <label for="updateRecipe">Select what to edit</label>
   <select id='updateRecipe' name='updateRecipe' type='text'>
@@ -11,4 +19,22 @@
   </select>
   <input type="text" id="newRecipeContent" name="newRecipeValue">
   <button type="submit" id="recipeFormButton" class="btn">Update your recipe</button>
+</form>
+
+<form action="/recipe/$recipe.getRecipeId()/rate" method="post">
+
+    <label for="rating">Rate the recipe</label>
+    <select id='updateRecipe' name='updateRecipe' type='text'>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <button type="submit" id="recipeRating" class="btn btn-success">Rate the recipe</button>
+</form>
+
+<form action="/recipe/$recipe.getRecipeId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-recipe">Delete recipe</button>
 </form>
