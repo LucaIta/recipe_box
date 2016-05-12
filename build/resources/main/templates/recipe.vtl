@@ -13,9 +13,24 @@
 #else
 #end
 
+#foreach($ingredient in $ingredients)
+  <p><a href="/ingredient/$ingredient.getId()">$ingredient.getIngredientName()</a></p>
+#end
+
 <br>
 <br>
 <h3>Edit your recipe</h3>
+
+<form action="/ingredients" method="post">
+<input id="recipe_id" name="recipe_id" type="hidden" value="$recipe.getRecipeId()">
+
+    <label for="ingredientName">Ingredient</label>
+    <input id="ingredientName" name="ingredientName" type="text">
+
+<button type="submit" id="addIngredient" class="btn btn-success">Add an ingredient to this recipe</button>
+
+</form>
+
 
 
 <form action="/recipe/$recipe.getRecipeId()" method="post">

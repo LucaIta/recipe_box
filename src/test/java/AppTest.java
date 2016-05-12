@@ -132,4 +132,31 @@ public class AppTest extends FluentTest {
     goTo(url);
     assertThat(pageSource()).contains("Tomato sauce").contains("Pizza");
   }
+
+  @Test
+  public void indivialdRecipeIsDIsplayedFromLinkInIngredientPAge() {
+    Ingredient ingredient = new Ingredient("Tomato sauce");
+    Recipe recipe = new Recipe("Pizza", "Make the pizza");
+    ingredient.save();
+    recipe.save();
+    recipe.addIngredient(ingredient);
+    String url = String.format("http://localhost:4567/ingredient/%d", ingredient.getId());
+    goTo(url);
+    click("a", withText("Pizza"));
+    assertThat(pageSource()).contains("Pizza").contains("Make the pizza");
+  }
+
+  @Test
+  public void ingredientIsAdded() {
+    Recipe newRecipe = new Recipe("Pizza", "Make the pizza");
+    newRecipe.save();
+    String url = String.format("http://localhost:4567/recipe/%d", newRecipe.getRecipeId());
+    goTo(url);
+    fill("#ingredientName").with("Tamato Sauce");
+    submit("#addIngredient");
+    assertThat(pageSource()).contains("Tamato Sauce");
+  }
+
+
+
 }

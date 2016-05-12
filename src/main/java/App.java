@@ -45,6 +45,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       int recipe_id = Integer.parseInt(request.params("recipe_id"));
       Recipe newRecipe = Recipe.find(recipe_id);
+      model.put("ingredients", newRecipe.getIngredients());
       model.put("recipeCategories", newRecipe.getCategories());
       model.put("categories", Category.all());
       model.put("recipe", newRecipe);
@@ -102,6 +103,16 @@ public class App {
       model.put("template", "templates/ingredient.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/ingredients", (request, response) ->  {
+      Recipe newRecipe = Recipe.find(Integer.parseInt(request.queryParams("recipe_id")));
+      Ingredient newIngredient = new Ingredient(request.queryParams("ingredientName"));
+      newIngredient.save();
+      newRecipe.addIngredient(newIngredient);
+      String url = String.format("/recipe/%d", newRecipe.getRecipeId());
+      response.redirect(url);
+      return null;
+    });
 
   }
 }
