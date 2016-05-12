@@ -34,12 +34,30 @@ public class App {
 
       Recipe newRecipe = new Recipe(recipeName, instructions);
       newRecipe.save();
-      
+
       model.put("template", "templates/recipe.vtl");
       model.put("recipe", newRecipe);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/recipe/:recipe_id", (request, response) ->  {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int recipe_id = Integer.parseInt(request.params("recipe_id"));
+      Recipe newRecipe = Recipe.find(recipe_id);
+      model.put("recipe", newRecipe);
+      model.put("template", "templates/recipe.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/recipe/:recipe_id", (request, response) ->  {
+      Recipe recipe = Recipe.find(Integer.parseInt(request.params("recipe_id")));
+      String property = request.queryParams("updateRecipe");
+      String propValue = request.queryParams("newRecipeValue");
+      recipe.update(property, propValue);
+      String url = String.format("/recipe/%d", recipe.getRecipeId());
+      response.redirect(url);
+      return null;
+    });
 
   }
 }

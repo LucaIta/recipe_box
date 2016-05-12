@@ -47,12 +47,33 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void individualRecipePagesRendersCorrectlt() {
+  public void individualRecipePagesRendersAfterCreatingRecipe() {
     goTo("http://localhost:4567/recipe/new");
     fill("#recipeName").with("Pizza");
     fill("#recipeInstructions").with("Make the pizza");
     submit("#addRecipe");
     assertThat(pageSource()).contains("Pizza").contains("Make the pizza");
+  }
+
+  @Test
+  public void individualRecipePagesRendersCorrectly(){
+    Recipe newRecipe = new Recipe("Pizza", "Make the Pizza");
+    newRecipe.save();
+    goTo("http://localhost:4567/");
+    click("a", withText ("Pizza"));
+    assertThat(pageSource()).contains("Pizza").contains("Make the Pizza");
+  }
+
+  @Test
+  public void individualRecipeIsUpdated(){
+    Recipe newRecipe = new Recipe("Pizza", "Make the Pizza");
+    newRecipe.save();
+    String url = String.format("http://localhost:4567/recipe/%d", newRecipe.getRecipeId());
+    goTo(url);
+    click("option", withText("Recipe Name"));
+    fill("#newRecipeContent").with("Margherita Pizza");
+    submit("#recipeFormButton");
+    assertThat(pageSource()).contains("Margherita Pizza");
   }
 
 }
