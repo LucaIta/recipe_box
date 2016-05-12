@@ -171,6 +171,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Pizza").contains("Make the pizza");
   }
 
+  @Test
+  public void ingredientIsDeleted() {
+    Ingredient newIngredient = new Ingredient("Flour");
+    newIngredient.save();
+    String url = String.format("http://localhost:4567/ingredient/%d", newIngredient.getId());
+    goTo(url);
+    submit("#deleteIngredient");
+    assertThat(pageSource()).contains("Ingredients").doesNotContain("Flour");
+  }
+
 
 
 }

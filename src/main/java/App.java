@@ -114,5 +114,12 @@ public class App {
       return null;
     });
 
+    post("/ingredient/:ingredient_id/delete", (request, response) ->  {
+      Ingredient ingredient = Ingredient.findIngredient(Integer.parseInt(request.params("ingredient_id")));
+      ingredient.delete();
+      response.redirect("/ingredients");
+      return null;
+    });
+
   }
 }

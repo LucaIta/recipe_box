@@ -2,3 +2,6 @@
 #foreach($recipe in $recipes)
   <p><a href="/recipe/$recipe.getRecipeId()">$recipe.getRecipeName()</a></p>
 #end
+<form action="/ingredient/$ingredient.getId()/delete" method="post">
+  <button type="submit" id="deleteIngredient" name="deleteIngredient" class="btn btn-danger">Delete this Ingredient</button>
+</form>
