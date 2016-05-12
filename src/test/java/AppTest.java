@@ -201,6 +201,15 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Tacos");
   }
 
+  @Test
+  public void categoryIsDeleted(){
+    Category category = new Category("Mexican");
+    category.save();
+    String url = String.format("http://localhost:4567/category/%d", category.getCategoryId());
+    goTo(url);
+    submit("#deleteCategory");
+    assertThat(pageSource()).contains("Recipe Box").doesNotContain("Mexican");
+  }
 
 
 }

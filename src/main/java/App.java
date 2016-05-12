@@ -143,5 +143,11 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/category/:category_Id/delete", (request, response) ->  {
+      Category.find(Integer.parseInt(request.params("category_Id"))).delete();
+      response.redirect("/");
+      return null;
+    });
+
   }
 }
