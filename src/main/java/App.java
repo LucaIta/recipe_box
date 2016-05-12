@@ -15,8 +15,10 @@ public class App {
 
     get("/", (request, response) ->  {
       Map <String, Object> model = new HashMap<String, Object>();
+      model.put("counter", 0);
       model.put("template", "templates/index.vtl");
       model.put("categories", Category.all());
+      model.put("orderedRecipes", Recipe.getRecipesSorted());
       model.put("recipes", Recipe.all());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -148,6 +150,16 @@ public class App {
       response.redirect("/");
       return null;
     });
+
+    get("/orderRecipes", (request, response) ->{
+      Map <String, Object> model = new HashMap<String, Object>();
+      model.put("counter", 1);
+      model.put("template", "templates/index.vtl");
+      model.put("categories", Category.all());
+      model.put("orderedRecipes", Recipe.getRecipesSorted());
+      model.put("recipes", Recipe.all());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }
