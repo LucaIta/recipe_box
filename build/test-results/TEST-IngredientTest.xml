@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IngredientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-12T18:44:26" hostname="epicodus-93.local" time="0.12">
+<testsuite name="IngredientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-05-12T18:49:45" hostname="epicodus-93.local" time="0.12">
   <properties/>
-  <testcase name="Ingredient_InstanceOfIngredient" classname="IngredientTest" time="0.004"/>
-  <testcase name="Ingredient_retrieveRecipesFromIngredient" classname="IngredientTest" time="0.028"/>
-  <testcase name="Ingredient_SaveIngredient" classname="IngredientTest" time="0.018"/>
+  <testcase name="Ingredient_InstanceOfIngredient" classname="IngredientTest" time="0.005"/>
+  <testcase name="Ingredient_retrieveRecipesFromIngredient" classname="IngredientTest" time="0.026"/>
+  <testcase name="Ingredient_SaveIngredient" classname="IngredientTest" time="0.017"/>
   <testcase name="Ingredient_DeleteIngredient" classname="IngredientTest" time="0.031"/>
-  <testcase name="Ingredient_FindIngredient" classname="IngredientTest" time="0.016"/>
+  <testcase name="Ingredient_FindIngredient" classname="IngredientTest" time="0.015"/>
   <testcase name="Ingredient_GetIngredientName" classname="IngredientTest" time="0.004"/>
-  <testcase name="Ingredient_DontSaveIngredientWHenItAlreadyExist" classname="IngredientTest" time="0.019"/>
+  <testcase name="Ingredient_DontSaveIngredientWHenItAlreadyExist" classname="IngredientTest" time="0.02"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

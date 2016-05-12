@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RecipeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2016-05-12T18:44:26" hostname="epicodus-93.local" time="0.186">
+<testsuite name="RecipeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2016-05-12T18:49:45" hostname="epicodus-93.local" time="0.183">
   <properties/>
   <testcase name="Recipe_SaveRecipe" classname="RecipeTest" time="0.013"/>
-  <testcase name="Recipe_retrieveRecipeCorrectly" classname="RecipeTest" time="0.014"/>
-  <testcase name="Recipe_tagRecipewithCategory" classname="RecipeTest" time="0.023"/>
-  <testcase name="Recipe_updatesTheRecipeNameCorrectly" classname="RecipeTest" time="0.016"/>
-  <testcase name="Recipe_rateRecipeCorrectly" classname="RecipeTest" time="0.016"/>
+  <testcase name="Recipe_retrieveRecipeCorrectly" classname="RecipeTest" time="0.013"/>
+  <testcase name="Recipe_tagRecipewithCategory" classname="RecipeTest" time="0.022"/>
+  <testcase name="Recipe_updatesTheRecipeNameCorrectly" classname="RecipeTest" time="0.018"/>
+  <testcase name="Recipe_rateRecipeCorrectly" classname="RecipeTest" time="0.017"/>
   <testcase name="Recipe_returnRecipesSortedByRating" classname="RecipeTest" time="0.03"/>
   <testcase name="Recipe_getInstructions" classname="RecipeTest" time="0.005"/>
-  <testcase name="Recipe_InstanceofRecipe" classname="RecipeTest" time="0.005"/>
-  <testcase name="Recipe_getRecipeName" classname="RecipeTest" time="0.004"/>
-  <testcase name="Recipe_DeleteRecipeFromDatabase" classname="RecipeTest" time="0.028"/>
-  <testcase name="Recipe_ingredientGetAssignedCOrrectly" classname="RecipeTest" time="0.028"/>
+  <testcase name="Recipe_InstanceofRecipe" classname="RecipeTest" time="0.004"/>
+  <testcase name="Recipe_getRecipeName" classname="RecipeTest" time="0.005"/>
+  <testcase name="Recipe_DeleteRecipeFromDatabase" classname="RecipeTest" time="0.03"/>
+  <testcase name="Recipe_ingredientGetAssignedCOrrectly" classname="RecipeTest" time="0.025"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

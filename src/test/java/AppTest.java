@@ -157,6 +157,20 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Tamato Sauce");
   }
 
+  @Test
+  public void ingredientIsAddedAndListedOnIngredientsPage() {
+    Recipe newRecipe = new Recipe("Pizza", "Make the pizza");
+    newRecipe.save();
+    String url = String.format("http://localhost:4567/recipe/%d", newRecipe.getRecipeId());
+    goTo(url);
+    fill("#ingredientName").with("Tamato Sauce");
+    submit("#addIngredient");
+    goTo("http://localhost:4567/ingredients");
+    click("a", withText("Tamato Sauce"));
+    click("a", withText("Pizza"));
+    assertThat(pageSource()).contains("Pizza").contains("Make the pizza");
+  }
+
 
 
 }
