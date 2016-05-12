@@ -20,11 +20,28 @@ public class Ingredient {
   }
 
   public void save() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO ingredients (ingredient_name) VALUES (:ingredient_name)";
-      this.id = (int) con.createQuery(sql, true).addParameter("ingredient_name", this.getIngredientName()).executeUpdate().getKey();
+    int counter = 0;
+    List<Ingredient> ingredients = Ingredient.all();
+    for (Ingredient ingredient : ingredients){
+      if (ingredient.getIngredientName().equals(this.getIngredientName())){
+        counter++;
+        this.id = ingredient.getId();
+      }
+    }
+    if(counter == 0) {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "INSERT INTO ingredients (ingredient_name) VALUES (:ingredient_name)";
+        this.id = (int) con.createQuery(sql, true).addParameter("ingredient_name", this.getIngredientName()).executeUpdate().getKey();
+      }
     }
   }
+
+  // public void save() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "INSERT INTO ingredients (ingredient_name) VALUES (:ingredient_name)";
+  //     this.id = (int) con.createQuery(sql, true).addParameter("ingredient_name", this.getIngredientName()).executeUpdate().getKey();
+  //   }
+  // }
 
   public static List<Ingredient> all() {
     try(Connection con = DB.sql2o.open()) {

@@ -112,7 +112,4 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Italian");
   }
 
-
-  // should check that categories are not there before adding them
-
 }

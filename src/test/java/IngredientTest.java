@@ -29,6 +29,16 @@ public class IngredientTest {
   }
 
   @Test
+  public void Ingredient_DontSaveIngredientWHenItAlreadyExist() {
+    Ingredient firstIngredient = new Ingredient("Flour");
+    Ingredient secondIngredient = new Ingredient("Flour");
+    firstIngredient.save();
+    secondIngredient.save();
+    assertEquals(firstIngredient.getId(),secondIngredient.getId());
+    assertEquals(1, Ingredient.all().size());
+  }
+
+  @Test
   public void Ingredient_FindIngredient() {
     Ingredient testIngredient = new Ingredient("Flour");
     testIngredient.save();
