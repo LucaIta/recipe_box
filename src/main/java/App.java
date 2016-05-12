@@ -85,6 +85,14 @@ public class App {
       String url = String.format("/recipe/%d", recipe.getRecipeId());
       response.redirect(url);
       return null;
-    }); 
+    });
+
+    get("/ingredients", (request, response) ->  {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("ingredients", Ingredient.all());
+      model.put("template", "templates/ingredients.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }

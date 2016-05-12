@@ -112,4 +112,12 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Italian");
   }
 
+  @Test
+  public void ingredientsListIsDIsplayed() {
+    Ingredient ingredient = new Ingredient("Tomato sauce");
+    ingredient.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("Ingredient's list"));
+    assertThat(pageSource()).contains("Tomato sauce");
+  }
 }
