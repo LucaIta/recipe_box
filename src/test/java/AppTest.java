@@ -120,4 +120,16 @@ public class AppTest extends FluentTest {
     click("a", withText("Ingredient's list"));
     assertThat(pageSource()).contains("Tomato sauce");
   }
+
+  @Test
+  public void individualIngredientPageListsAssociatedRecipes() {
+    Ingredient ingredient = new Ingredient("Tomato sauce");
+    Recipe recipe = new Recipe("Pizza", "Make the pizza");
+    ingredient.save();
+    recipe.save();
+    recipe.addIngredient(ingredient);
+    String url = String.format("http://localhost:4567/ingredient/%d", ingredient.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("Tomato sauce").contains("Pizza");
+  }
 }

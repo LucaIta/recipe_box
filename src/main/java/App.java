@@ -94,5 +94,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/ingredient/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Ingredient ingredient = Ingredient.findIngredient(Integer.parseInt(request.params("id")));
+      model.put("ingredient", ingredient);
+      model.put("recipes", ingredient.getRecipes());
+      model.put("template", "templates/ingredient.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
