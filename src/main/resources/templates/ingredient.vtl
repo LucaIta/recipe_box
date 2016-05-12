@@ -1,7 +1,13 @@
 <h1>$ingredient.getIngredientName()</h1>
-#foreach($recipe in $recipes)
-  <p><a href="/recipe/$recipe.getRecipeId()">$recipe.getRecipeName()</a></p>
+#if($recipes.size() > 0)
+  #foreach($recipe in $recipes)
+    <p><a href="/recipe/$recipe.getRecipeId()">$recipe.getRecipeName()</a></p>
+  #end
+#else
 #end
 <form action="/ingredient/$ingredient.getId()/delete" method="post">
   <button type="submit" id="deleteIngredient" name="deleteIngredient" class="btn btn-danger">Delete this Ingredient</button>
 </form>
+<br>
+<br>
+<a href="/">Home</a>
