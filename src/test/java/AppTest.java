@@ -181,6 +181,14 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Ingredients").doesNotContain("Flour");
   }
 
+  @Test
+  public void categoryIsAdded() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add a new category"));
+    fill("#categoryName").with("Italian");
+    assertThat(pageSource()).contains("Italian");
+  }
+
 
 
 }

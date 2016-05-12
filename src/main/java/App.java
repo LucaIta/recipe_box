@@ -121,5 +121,18 @@ public class App {
       return null;
     });
 
+    get("/category/new", (request, response) ->  {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "/templates/category-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/category", (request, response) ->  {
+      Category newCategory = new Category(request.queryParams("categoryName"));
+      newCategory.save();
+      response.redirect("/");
+      return null;
+    });
+
   }
 }
